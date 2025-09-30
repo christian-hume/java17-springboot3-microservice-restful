@@ -2,6 +2,14 @@ spring:
   application:
     name: java17-springboot3-microservice-restful
 
+# Embedded server configuration
+server:
+  servlet:
+    # Context path of the application
+    context-path: /
+  # Server HTTP port
+  port: 8080
+
 management:
   endpoints:
     web:
