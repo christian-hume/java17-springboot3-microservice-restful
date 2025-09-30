@@ -6,7 +6,7 @@ spring:
     driverClassName: org.h2.Driver
     username: sa
     password: password
-    # Configuración para ejecutar scripts SQL
+    # Configuracion para ejecutar scripts SQL
     initialization-mode: always
     schema: classpath:schema.sql
     data: classpath:data.sql
