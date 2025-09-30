@@ -1,30 +1,44 @@
 package com.java17.springboot3.microservice.restful.models;
 
-import java.util.List;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+
+@Entity
+@Table(name = "tbl_user")
 public class UserModel {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "nationality")
     private String nationality;
+
+    @Column(name = "occupation")
     private String occupation;
+
+    @Column(name = "known_for")
     private String knownFor;
-    private List<String> awards;
+
+    @Column(name = "phone")
     private String phone;
+
+    @Column(name = "email")
     private String email;
 
-    // Constructor privado para forzar el uso del builder
-    private UserModel(Builder builder) {
-        this.id = builder.id;
-        this.firstName = builder.firstName;
-        this.lastName = builder.lastName;
-        this.nationality = builder.nationality;
-        this.occupation = builder.occupation;
-        this.knownFor = builder.knownFor;
-        this.awards = builder.awards;
-        this.phone = builder.phone;
-        this.email = builder.email;
+    public UserModel() {
+        //
     }
 
     public Long getId() {
@@ -67,6 +81,14 @@ public class UserModel {
         this.occupation = occupation;
     }
 
+    public String getKnownFor() {
+        return knownFor;
+    }
+
+    public void setKnownFor(String knownFor) {
+        this.knownFor = knownFor;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -81,90 +103,6 @@ public class UserModel {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getKnownFor() {
-        return knownFor;
-    }
-
-    public void setKnownFor(String knownFor) {
-        this.knownFor = knownFor;
-    }
-
-    public List<String> getAwards() {
-        return awards;
-    }
-
-    public void setAwards(List<String> awards) {
-        this.awards = awards;
-    }
-
-    // Método estático para obtener el builder
-    public static Builder builder() {
-        return new Builder();
-    }
-
-    // Builder estático interno
-    public static class Builder {
-
-        private Long id;
-        private String firstName;
-        private String lastName;
-        private String nationality;
-        private String occupation;
-        private String knownFor;
-        private List<String> awards;
-        private String phone;
-        private String email;
-
-        public Builder id(Long id) {
-            this.id = id;
-            return this;
-        }
-
-        public Builder firstName(String firstName) {
-            this.firstName = firstName;
-            return this;
-        }
-
-        public Builder lastName(String lastName) {
-            this.lastName = lastName;
-            return this;
-        }
-
-        public Builder nationality(String nationality) {
-            this.nationality = nationality;
-            return this;
-        }
-
-        public Builder occupation(String occupation) {
-            this.occupation = occupation;
-            return this;
-        }
-
-        public Builder knownFor(String knownFor) {
-            this.knownFor = knownFor;
-            return this;
-        }
-
-        public Builder awards(List<String> awards) {
-            this.awards = awards;
-            return this;
-        }
-
-        public Builder phone(String phone) {
-            this.phone = phone;
-            return this;
-        }
-
-        public Builder email(String email) {
-            this.email = email;
-            return this;
-        }
-
-        public UserModel build() {
-            return new UserModel(this);
-        }
     }
 
 }
