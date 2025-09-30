@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/java17/springboot3/api/v1")
+@RequestMapping("/api/v1")
 public class UserController {
 
     private final UserService userService;
