@@ -3,6 +3,7 @@ package com.java17.springboot3.microservice.restful.services.impl;
 import com.java17.springboot3.microservice.restful.models.UserModel;
 import com.java17.springboot3.microservice.restful.repositories.UserRepository;
 import com.java17.springboot3.microservice.restful.services.UserService;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,33 +19,37 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Long createUser(UserModel userModel) {
-        return userRepository.createUser(userModel);
+    public Long createUser(UserModel userCreate) {
+        UserModel userNew = userRepository.save(userCreate);
+        return userNew.getId();
     }
 
     @Override
     public List<UserModel> findUserAll() {
-        return userRepository.findUserAll();
+        return userRepository.findAll();
     }
 
     @Override
     public UserModel findUserById(Long idUser) {
-        UserModel userModel = null;
-        Optional<UserModel> userOptional = userRepository.findUserById(idUser);
+        UserModel userReturn = null;
+        Optional<UserModel> userOptional = userRepository.findById(idUser);
         if (userOptional.isPresent()) {
-            userModel = userOptional.get();
+            userReturn = userOptional.get();
         }
-        return userModel;
+        return userReturn;
     }
 
     @Override
-    public void updateUser(Long idUser, UserModel userModel) {
-        userRepository.updateUser(idUser, userModel);
+    public void updateUser(Long idUser, UserModel userUpdate) {
+        userRepository.save(userUpdate);
     }
 
     @Override
     public void deleteUser(Long idUser) {
-        userRepository.deleteUser(idUser);
+        Optional<UserModel> userOptional = userRepository.findById(idUser);
+        if (userOptional.isPresent()) {
+            userRepository.delete(userOptional.get());
+        }
     }
 
 }
