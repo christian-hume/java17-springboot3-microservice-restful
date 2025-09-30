@@ -20,7 +20,6 @@ public class ExceptionHandling {
                 .message(ex.getMessage())
                 .path(request.getDescription(false))
                 .build();
-
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exceptionResponse);
     }
 
