@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: java17-springboot3-microservice-restful
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: never
