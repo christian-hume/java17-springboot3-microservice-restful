@@ -9,6 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * @author Username Developer (DEVs)
+ * @version 1.0.0
+ * @since 2025-10-01
+ */
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -46,10 +51,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(Long idUser) {
-        Optional<UserModel> userOptional = userRepository.findById(idUser);
-        if (userOptional.isPresent()) {
-            userRepository.delete(userOptional.get());
-        }
+        // Optional<UserModel> userOptional = userRepository.findById(idUser);
+        // if (userOptional.isPresent()) {
+        //     userRepository.delete(userOptional.get());
+        // }
+        userRepository.findById(idUser).ifPresent(userRepository::delete);
     }
 
 }

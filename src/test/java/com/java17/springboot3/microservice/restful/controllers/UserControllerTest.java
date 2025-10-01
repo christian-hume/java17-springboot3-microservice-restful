@@ -18,6 +18,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.times;
 
+/**
+ * @author Username Developer (DEVs)
+ * @version 1.0.0
+ * @since 2025-10-01
+ */
 @ExtendWith(MockitoExtension.class)
 class UserControllerTest {
 
