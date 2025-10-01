@@ -15,8 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * @author Username Developer (DEVs)
+ * @version 1.0.0
+ * @since 2025-10-01
+ */
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/apis/restful/v1")
 public class UserController {
 
     private final UserService userService;
@@ -26,7 +31,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/users")
-    public ResponseEntity<Long> createUser(UserModel userModel) {
+    public ResponseEntity<Long> createUser(@RequestBody UserModel userModel) {
         return ResponseEntity.ok(userService.createUser(userModel));
     }
 
@@ -40,14 +45,14 @@ public class UserController {
         return ResponseEntity.ok(userService.findUserById(idUser));
     }
 
-    @PutMapping(value = "/users")
-    public ResponseEntity<Void> updateUser(@PathVariable Long idUser, @RequestBody UserModel userModel) {
+    @PutMapping(value = "/users/{id_user}")
+    public ResponseEntity<Void> updateUser(@PathVariable("id_user") Long idUser, @RequestBody UserModel userModel) {
         userService.updateUser(idUser, userModel);
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping(value = "/users")
-    public ResponseEntity<Void> deleteUser(Long isUser) {
+    @DeleteMapping(value = "/users/{id_user}")
+    public ResponseEntity<Void> deleteUser(@PathVariable("id_user") Long isUser) {
         userService.deleteUser(isUser);
         return ResponseEntity.ok().build();
     }

@@ -12,9 +12,9 @@ RESTful microservice project developed with Java 17 and Spring Boot 3.5.6
 
 ## Technologies
 Project is created with:
-* Java 17
+* Java 17 LTS
 * Spring Boot 3.5.6
-* Gradle 8.10.2
+* Gradle 8.14.3
 
 ## Installation
 To run this project, install it locally using git:
@@ -41,8 +41,8 @@ http://localhost:8080/actuator/health
 
 ## Author
 Name and contact info
-* Christian Hume
-* christian-hume@outlook.com
+* Username Developer (DEVs)
+* username-developer@email.com
 
 ## Version
 * 1.0.0

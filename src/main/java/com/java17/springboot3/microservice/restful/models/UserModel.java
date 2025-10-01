@@ -7,6 +7,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+/**
+ * @author Username Developer (DEVs)
+ * @version 1.0.0
+ * @since 2025-10-01
+ */
 @Entity
 @Table(name = "tbl_user")
 public class UserModel {
