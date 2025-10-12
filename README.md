@@ -41,7 +41,7 @@ http://localhost:8080/actuator/health
 
 ## Author
 Name and contact info
-* Username Developer (DEVs)
+* Christian Hume (DEVs)
 * username-developer@email.com
 
 ## Version

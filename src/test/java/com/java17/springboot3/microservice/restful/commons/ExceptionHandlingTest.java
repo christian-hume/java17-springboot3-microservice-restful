@@ -1,6 +1,6 @@
 package com.java17.springboot3.microservice.restful.commons;
 
-import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -9,27 +9,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.context.request.WebRequest;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 /**
- * @author Username Developer (DEVs)
+ * @author Christian Hume (DEVs)
  * @version 1.0.0
  * @since 2025-10-01
  */
 class ExceptionHandlingTest {
-
-    // @BeforeEach
-    // void setUp() {
-    // }
-
-    @AfterEach
-    void tearDown() {
-    }
-
-    @Test
-    void handleException() {
-    }
 
     private ExceptionHandling exceptionHandling;
 
@@ -52,13 +39,13 @@ class ExceptionHandlingTest {
         ResponseEntity<ExceptionResponse> response = exceptionHandling.handleException(exception, webRequest);
 
         // Assert
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+        Assertions.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
         ExceptionResponse body = response.getBody();
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), body.getStatus());
-        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), body.getError());
-        assertEquals("Test exception", body.getMessage());
-        assertEquals("uri=/test", body.getPath());
+        Assertions.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.value(), body.getStatus());
+        Assertions.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(), body.getError());
+        Assertions.assertEquals("Test exception", body.getMessage());
+        Assertions.assertEquals("uri=/test", body.getPath());
         // timestamp no se valida exacto, pero sí que no es null
-        assertEquals(true, body.getTimestamp() != null);
+        Assertions.assertEquals(true, body.getTimestamp() != null);
     }
 }

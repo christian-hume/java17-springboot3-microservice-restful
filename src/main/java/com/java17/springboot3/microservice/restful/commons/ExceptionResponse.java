@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDateTime;
 
 /**
- * @author Username Developer (DEVs)
+ * @author Christian Hume (DEVs)
  * @version 1.0.0
  * @since 2025-10-01
  */

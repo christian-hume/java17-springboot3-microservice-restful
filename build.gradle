@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.java17.springboot3.microservice.restful'
 version = '0.0.1-SNAPSHOT'
-description = 'RESTful microservice project developed with Java 17 and Spring Boot 3.5.6'
+description = 'RESTful microservice project built with Java 17 and Spring Boot 3.5.6'
 
 java {
 	toolchain {

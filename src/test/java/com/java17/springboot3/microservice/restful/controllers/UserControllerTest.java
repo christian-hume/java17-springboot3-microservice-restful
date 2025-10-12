@@ -9,17 +9,16 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.times;
 
 /**
- * @author Username Developer (DEVs)
+ * @author Christian Hume (DEVs)
  * @version 1.0.0
  * @since 2025-10-01
  */
@@ -48,9 +47,9 @@ class UserControllerTest {
         ResponseEntity<Long> response = userController.createUser(userModel);
 
         // Verificar el resultado
-        assertNotNull(response);
-        assertEquals(200, response.getStatusCodeValue());
-        assertEquals(expectedUserId, response.getBody());
+        Assertions.assertNotNull(response);
+        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assertions.assertEquals(expectedUserId, response.getBody());
 
         // Verificar la interacción con el servicio
         Mockito.verify(userService, times(1)).createUser(userModel);
@@ -66,16 +65,16 @@ class UserControllerTest {
         user2.setId(2L);
         user2.setFirstName("User2");
 
-        Mockito.when(userService.findUserAll())
+        Mockito.when(userService.findAllUsers())
                 .thenReturn(Arrays.asList(user1, user2));
 
         ResponseEntity<List<UserModel>> response = userController.findUserAll();
 
         Assertions.assertNotNull(response);
-        Assertions.assertEquals(200, response.getStatusCodeValue());
+        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
         Assertions.assertEquals(2, response.getBody().size());
 
-        Mockito.verify(userService, times(1)).findUserAll();
+        Mockito.verify(userService, times(1)).findAllUsers();
     }
 
     @Test
@@ -90,7 +89,7 @@ class UserControllerTest {
         ResponseEntity<UserModel> response = userController.findUserById(1L);
 
         Assertions.assertNotNull(response);
-        Assertions.assertEquals(200, response.getStatusCodeValue());
+        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
         Assertions.assertEquals(1L, response.getBody().getId());
 
         Mockito.verify(userService, times(1)).findUserById(1L);
@@ -107,7 +106,7 @@ class UserControllerTest {
         ResponseEntity<Void> response = userController.updateUser(1L, userModel);
 
         Assertions.assertNotNull(response);
-        Assertions.assertEquals(200, response.getStatusCodeValue());
+        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
 
         Mockito.verify(userService, times(1)).updateUser(1L, userModel);
     }
@@ -118,8 +117,8 @@ class UserControllerTest {
 
         ResponseEntity<Void> response = userController.deleteUser(1L);
 
-        assertNotNull(response);
-        assertEquals(200, response.getStatusCodeValue());
+        Assertions.assertNotNull(response);
+        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
 
         Mockito.verify(userService, times(1)).deleteUser(1L);
     }
