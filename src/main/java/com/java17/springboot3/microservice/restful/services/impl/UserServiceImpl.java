@@ -1,16 +1,17 @@
 package com.java17.springboot3.microservice.restful.services.impl;
 
+import com.java17.springboot3.microservice.restful.commons.exceptions.NotFoundException;
 import com.java17.springboot3.microservice.restful.models.UserModel;
 import com.java17.springboot3.microservice.restful.repositories.UserRepository;
 import com.java17.springboot3.microservice.restful.services.UserService;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
- * @author Username Developer (DEVs)
+ * @author Christian Hume (DEVs)
  * @version 1.0.0
  * @since 2025-10-01
  */
@@ -30,32 +31,32 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserModel> findUserAll() {
+    public List<UserModel> findAllUsers() {
         return userRepository.findAll();
     }
 
     @Override
     public UserModel findUserById(Long idUser) {
-        UserModel userReturn = null;
-        Optional<UserModel> userOptional = userRepository.findById(idUser);
-        if (userOptional.isPresent()) {
-            userReturn = userOptional.get();
-        }
-        return userReturn;
+        return userRepository.findById(idUser)
+                .orElseThrow(() -> new NotFoundException(HttpStatus.NOT_FOUND.getReasonPhrase() + ": " + idUser));
     }
 
     @Override
     public void updateUser(Long idUser, UserModel userUpdate) {
-        userRepository.save(userUpdate);
+        UserModel existingUser = userRepository.findById(idUser)
+                .orElseThrow(() -> new NotFoundException(HttpStatus.NOT_FOUND.getReasonPhrase() + ": " + idUser));
+        existingUser.setFirstName(userUpdate.getFirstName());
+        existingUser.setEmail(userUpdate.getEmail());
+        existingUser.setOccupation(userUpdate.getOccupation());
+        userRepository.save(existingUser);
     }
 
     @Override
     public void deleteUser(Long idUser) {
-        // Optional<UserModel> userOptional = userRepository.findById(idUser);
-        // if (userOptional.isPresent()) {
-        //     userRepository.delete(userOptional.get());
-        // }
-        userRepository.findById(idUser).ifPresent(userRepository::delete);
+        if (!userRepository.existsById(idUser)) {
+            throw new NotFoundException(HttpStatus.NOT_FOUND.getReasonPhrase() + ": " + idUser);
+        }
+        userRepository.deleteById(idUser);
     }
 
 }

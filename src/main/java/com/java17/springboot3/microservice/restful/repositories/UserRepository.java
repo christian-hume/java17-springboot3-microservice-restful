@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author Username Developer (DEVs)
+ * @author Christian Hume (DEVs)
  * @version 1.0.0
  * @since 2025-10-01
  */

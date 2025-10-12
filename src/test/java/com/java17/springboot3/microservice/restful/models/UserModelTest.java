@@ -1,11 +1,10 @@
 package com.java17.springboot3.microservice.restful.models;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 /**
- * @author Username Developer (DEVs)
+ * @author Christian Hume (DEV)
  * @version 1.0.0
  * @since 2025-10-01
  */
@@ -13,39 +12,39 @@ class UserModelTest {
 
     @Test
     void testSettersAndGetters() {
-        UserModel user = new UserModel();
+        UserModel userModel = new UserModel();
 
-        user.setId(1L);
-        user.setFirstName("John");
-        user.setLastName("Doe");
-        user.setNationality("Chilean");
-        user.setOccupation("Engineer");
-        user.setKnownFor("Software Development");
-        user.setPhone("+56 987654321");
-        user.setEmail("john.doe@example.com");
+        userModel.setId(1L);
+        userModel.setFirstName("John");
+        userModel.setLastName("Doe");
+        userModel.setNationality("Chilean");
+        userModel.setOccupation("Engineer");
+        userModel.setKnownFor("Software Development");
+        userModel.setPhone("+56 987654321");
+        userModel.setEmail("john.doe@example.com");
 
-        assertEquals(1L, user.getId());
-        assertEquals("John", user.getFirstName());
-        assertEquals("Doe", user.getLastName());
-        assertEquals("Chilean", user.getNationality());
-        assertEquals("Engineer", user.getOccupation());
-        assertEquals("Software Development", user.getKnownFor());
-        assertEquals("+56 987654321", user.getPhone());
-        assertEquals("john.doe@example.com", user.getEmail());
+        Assertions.assertEquals(1L, userModel.getId());
+        Assertions.assertEquals("John", userModel.getFirstName());
+        Assertions.assertEquals("Doe", userModel.getLastName());
+        Assertions.assertEquals("Chilean", userModel.getNationality());
+        Assertions.assertEquals("Engineer", userModel.getOccupation());
+        Assertions.assertEquals("Software Development", userModel.getKnownFor());
+        Assertions.assertEquals("+56 987654321", userModel.getPhone());
+        Assertions.assertEquals("john.doe@example.com", userModel.getEmail());
     }
 
     @Test
     void testDefaultConstructor() {
-        UserModel user = new UserModel();
+        UserModel userModel = new UserModel();
 
-        assertNull(user.getId());
-        assertNull(user.getFirstName());
-        assertNull(user.getLastName());
-        assertNull(user.getNationality());
-        assertNull(user.getOccupation());
-        assertNull(user.getKnownFor());
-        assertNull(user.getPhone());
-        assertNull(user.getEmail());
+        Assertions.assertNull(userModel.getId());
+        Assertions.assertNull(userModel.getFirstName());
+        Assertions.assertNull(userModel.getLastName());
+        Assertions.assertNull(userModel.getNationality());
+        Assertions.assertNull(userModel.getOccupation());
+        Assertions.assertNull(userModel.getKnownFor());
+        Assertions.assertNull(userModel.getPhone());
+        Assertions.assertNull(userModel.getEmail());
     }
 
 }

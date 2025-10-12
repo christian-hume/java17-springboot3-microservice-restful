@@ -1,5 +1,6 @@
 package com.java17.springboot3.microservice.restful.commons;
 
+import com.java17.springboot3.microservice.restful.commons.exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -9,7 +10,7 @@ import org.springframework.web.context.request.WebRequest;
 import java.time.LocalDateTime;
 
 /**
- * @author Username Developer (DEVs)
+ * @author Christian Hume (DEVs)
  * @version 1.0.0
  * @since 2025-10-01
  */
@@ -28,9 +29,8 @@ public class ExceptionHandling {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exceptionResponse);
     }
 
-    /*
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ExceptionResponse> handleExceptionNotFound(Exception ex, WebRequest request) {
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ExceptionResponse> handleNotFoundException(NotFoundException ex, WebRequest request) {
         ExceptionResponse exceptionResponse = ExceptionResponse.builder()
                 .timestamp(LocalDateTime.now())
                 .status(HttpStatus.NOT_FOUND.value())
@@ -38,8 +38,7 @@ public class ExceptionHandling {
                 .message(ex.getMessage())
                 .path(request.getDescription(false))
                 .build();
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exceptionResponse);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exceptionResponse);
     }
-     */
 
 }
