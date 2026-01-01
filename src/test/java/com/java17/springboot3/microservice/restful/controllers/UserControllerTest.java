@@ -68,7 +68,7 @@ class UserControllerTest {
         Mockito.when(userService.findAllUsers())
                 .thenReturn(Arrays.asList(user1, user2));
 
-        ResponseEntity<List<UserModel>> response = userController.findUserAll();
+        ResponseEntity<List<UserModel>> response = userController.findAllUsers();
 
         Assertions.assertNotNull(response);
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
