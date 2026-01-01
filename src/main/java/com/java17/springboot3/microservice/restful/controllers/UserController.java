@@ -21,7 +21,7 @@ import java.util.List;
  * @since 2025-10-01
  */
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/java/api/v1")
 public class UserController {
 
     private final UserService userService;
