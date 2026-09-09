@@ -37,6 +37,7 @@ Run file /Application.java
 3.- To test if the project is running, you should access the following URL in a web browser
 ```
 http://localhost:8080/actuator/health
+http://localhost:8080/java/api/v1/users
 ```
 
 ## Author
